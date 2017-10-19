@@ -1,3 +1,5 @@
 package de.transporter
 
-trait Location
+trait Location {
+  def id: String
+}

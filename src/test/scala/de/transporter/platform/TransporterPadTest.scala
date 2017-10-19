@@ -14,7 +14,9 @@ class TransporterPadTest extends FeatureSpec with Matchers {
         override def owner = "bar"
       }
 
-      object TestLocation extends Location
+      object TestLocation extends Location {
+        override def id = "foobar"
+      }
 
       object TestEnergy extends Energy {
         override def toJson = "dematerialized energy"
