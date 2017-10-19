@@ -14,7 +14,7 @@ It accepts incoming data via REST.
 
 ## Configuring
 
-To change configs like the port the HTTP server is listening and similar,
+To change configs like the port the HTTP server is listening to and similar,
 change the `application.conf` file.
 
 ## Incoming Data
