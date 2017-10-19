@@ -5,6 +5,7 @@ import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
+import de.transporter.console.Console
 import io.prometheus.client.hotspot.DefaultExports
 
 import scala.concurrent.ExecutionContext
@@ -26,7 +27,7 @@ object Transporter extends App with LazyLogging {
   val httpConfig = config.getConfig("http")
   val httpPort = httpConfig.getInt("port")
   val httpInterface = httpConfig.getString("interface")
-  val serverBindingFuture = Http().bindAndHandle(TransporterConsole.routes, interface = httpInterface, port = httpPort)
+  val serverBindingFuture = Http().bindAndHandle(Console.routes, interface = httpInterface, port = httpPort)
   logger.info(s"Started HTTP Server at $httpInterface:$httpPort")
   logger.info("Press RETURN to stop")
   StdIn.readLine()
