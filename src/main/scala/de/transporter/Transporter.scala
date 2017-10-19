@@ -14,7 +14,13 @@ import scala.io.StdIn
 object Transporter extends App with LazyLogging {
   logger.info("Starting Transporter")
   logger.debug("Loading config")
-  val config = ConfigFactory.load()
+
+  val config = if (args.length > 0) {
+    ConfigFactory.load(args(0))
+  } else {
+    ConfigFactory.load()
+  }
+
 
   logger.debug("Starting Actor System")
   implicit val system: ActorSystem = ActorSystem("Transporter")
