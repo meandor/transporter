@@ -12,9 +12,9 @@ class TransporterConsoleTest extends FlatSpec with Matchers with ScalaFutures wi
     request ~> TransporterConsole.routes ~> check {
       status should ===(StatusCodes.OK)
 
-      entityAs[String] shouldBe
+      entityAs[String] should include(
         "# HELP request_processing_seconds Time spent processing request\n" +
-          "# TYPE request_processing_seconds histogram\n"
+          "# TYPE request_processing_seconds histogram\n")
     }
   }
 }

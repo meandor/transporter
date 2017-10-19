@@ -17,6 +17,25 @@ It accepts incoming data via REST.
 To change configs like the port the HTTP server is listening to and similar,
 change the `application.conf` file.
 
+## Testing
+Execute the tests with gradle:
+```bash
+./gradlew check
+```
+
+## Building
+To build with gradle:
+```bash
+./gradlew distZip
+```
+
+This will create a zip file under `./build/distributions/`
+
+Unzip it and then execute the application within the extracted folder:
+```bash
+./bin/transporter
+```
+
 ## Incoming Data
 Add interfaces for dealing with incoming data at `de.transporter.console.TransporterConsole`
 by registering [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/scala/http/) routes.

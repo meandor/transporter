@@ -1,4 +1,10 @@
 apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+group = "de.transporter"
+version = "0.1.0-SNAPSHOT"
+mainClassName = "de.transporter.Transporter"
 
 repositories {
     jcenter()
@@ -22,4 +28,3 @@ dependencies {
     testCompile "com.typesafe.akka:akka-testkit_$scalaVersion:$akkaVersion"
     testCompile "com.typesafe.akka:akka-http-testkit_$scalaVersion:$akkaHttpVersion"
 }
-
