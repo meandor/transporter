@@ -4,14 +4,20 @@ repositories {
     jcenter()
 }
 
-def scalaVersion = "2.12"
+def scalaVersion = "2.11"
+def akkaVersion = "2.4.16"
+def akkaHttpVersion = "10.0.1"
 
 dependencies {
     compile "org.scala-lang:scala-library:$scalaVersion.+"
     compile "io.prometheus:simpleclient:0.1.0"
     compile "io.prometheus:simpleclient_hotspot:0.1.0"
+    compile "com.typesafe.akka:akka-actor_$scalaVersion:$akkaVersion"
+    compile "com.typesafe.akka:akka-http_$scalaVersion:$akkaHttpVersion"
+    compile "com.lonelyplanet:prometheus-akka-http_$scalaVersion:0.3.3"
 
     testCompile "org.scalatest:scalatest_$scalaVersion:3.0.3"
+    testCompile "com.typesafe.akka:akka-testkit_$scalaVersion:$akkaVersion"
     testRuntime "org.scala-lang.modules:scala-xml_$scalaVersion:1.0.6"
 }
 
