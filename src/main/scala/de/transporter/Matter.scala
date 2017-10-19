@@ -1,3 +1,7 @@
 package de.transporter
 
-trait Matter
+trait Matter {
+  def id: String
+
+  def owner: String
+}

@@ -8,7 +8,11 @@ class TransporterPadTest extends FeatureSpec with Matchers {
   feature("Use TransportPad to transport Matter to a Location") {
     scenario("Basic functionality and components test by transporting something to somewhere") {
 
-      object TestMatter extends Matter
+      object TestMatter extends Matter {
+        override def id = "foo"
+
+        override def owner = "bar"
+      }
 
       object TestLocation extends Location
 
@@ -31,7 +35,10 @@ class TransporterPadTest extends FeatureSpec with Matchers {
       }
 
       object TestPTC extends PhaseTransitionCoil {
-        override def energize(subject: Matter): Energy = TestEnergy
+        override def energize(subject: Matter): Energy = {
+          subject shouldBe TestMatter
+          TestEnergy
+        }
       }
 
       val pad = TransporterPad(TestTS, TestPTC)
