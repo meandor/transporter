@@ -20,5 +20,6 @@ dependencies {
 
     testCompile "org.scalatest:scalatest_$scalaVersion:3.0.3"
     testCompile "com.typesafe.akka:akka-testkit_$scalaVersion:$akkaVersion"
+    testCompile "com.typesafe.akka:akka-http-testkit_$scalaVersion:$akkaHttpVersion"
 }
 
