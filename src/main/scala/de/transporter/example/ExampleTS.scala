@@ -5,6 +5,8 @@ import de.transporter.Location
 import de.transporter.platform.{Energy, Target, TargetingScanner}
 
 object ExampleTarget extends Target with LazyLogging {
+  override def location: Location = ExampleLocation("uranus")
+
   override def materialize(energy: Energy): Boolean = {
     logger.info(s"materializing: ${energy.toJson}")
     energy == ExampleEnergy(ExampleMatter("foo", "bar"))

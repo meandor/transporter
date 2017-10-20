@@ -1,26 +1,26 @@
 package de.transporter
 
-import io.prometheus.client.Counter
+import io.prometheus.client.{Counter, Gauge, Histogram}
 
 object Metrics {
-  private val successfulBeams: Counter = Counter.build().name("successful_beams_total")
-    .help("Total number of successful beams .").labelNames("location", "owner", "matter").register()
+  private val totalBeams: Counter = Counter.build().name("beams_total")
+    .help("Total number of beams .").labelNames("status", "location", "owner", "matter").register()
 
-  private val unsuccessfulBeams: Counter = Counter.build().name("unsuccessful_beams_total")
-    .help("Total number of unsuccessful beams.").labelNames("location", "owner", "matter").register()
+  val beamLag: Gauge = Gauge.build().name("beam_lag")
+    .help("Lag of unprocessed beams").labelNames("location").register()
 
-  private val faultyBeams: Counter = Counter.build().name("faulty_beams_total")
-    .help("Total number of beams that went wrong.").labelNames("location", "owner", "matter").register()
+  val materializationHistogram: Histogram = Histogram.build().name("materializations_latency_seconds")
+    .help("Request latency in seconds.").labelNames("location").register()
 
   def successfulBeam(location: String, owner: String, matter: String): Unit = {
-    successfulBeams.labels(location, owner, matter).inc()
+    totalBeams.labels("successful", location, owner, matter).inc()
   }
 
   def unsuccessfulBeam(location: String, owner: String, matter: String): Unit = {
-    unsuccessfulBeams.labels(location, owner, matter).inc()
+    totalBeams.labels("unsuccessful", location, owner, matter).inc()
   }
 
   def faultyBeam(location: String, owner: String, matter: String): Unit = {
-    faultyBeams.labels(location, owner, matter).inc()
+    totalBeams.labels("faulty", location, owner, matter).inc()
   }
 }

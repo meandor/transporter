@@ -8,6 +8,7 @@ import akka.http.scaladsl.server.directives.MethodDirectives.post
 import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import akka.pattern.ask
 import akka.util.Timeout
+import de.transporter.Metrics
 import de.transporter.platform.Platform.{ActionPerformed, Beam}
 
 import scala.concurrent.duration._
@@ -28,7 +29,8 @@ trait ExampleRoutes extends JsonSupport {
           concat(
             post {
               entity(as[ExampleRequest]) { testRequest =>
-                val userCreated: Future[ActionPerformed] = {
+                Metrics.beamLag.labels(testRequest.location.id).inc()
+                val beam: Future[ActionPerformed] = {
                   val examplePadActor = actors.get("examplePad")
                   if (examplePadActor.isDefined) {
                     (examplePadActor.get ? Beam(testRequest.matter, testRequest.location)).mapTo[ActionPerformed]
@@ -36,7 +38,9 @@ trait ExampleRoutes extends JsonSupport {
                     Future(ActionPerformed("Actor not found!"))(ExecutionContext.global)
                   }
                 }
-                onSuccess(userCreated) { performed =>
+
+                onSuccess(beam) { performed =>
+                  Metrics.beamLag.labels(testRequest.location.id).dec()
                   complete((StatusCodes.Created, performed))
                 }
               }
