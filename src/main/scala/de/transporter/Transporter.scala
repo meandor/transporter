@@ -5,7 +5,8 @@ import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
-import de.transporter.console.TransporterConsole
+import de.transporter.example.{ExamplePTC, ExampleTS}
+import de.transporter.platform.Platform
 import io.prometheus.client.hotspot.DefaultExports
 
 import scala.concurrent.ExecutionContext
@@ -21,11 +22,14 @@ object Transporter extends App with LazyLogging {
     ConfigFactory.load()
   }
 
-
   logger.debug("Starting Actor System")
   implicit val system: ActorSystem = ActorSystem("Transporter")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executionContext: ExecutionContext = system.dispatcher
+
+  // Register your actors here
+  val testPad = system.actorOf(Platform.props(ExamplePTC, ExampleTS), "testPad")
+  val actors = Map("examplePad" -> testPad)
 
   logger.debug("Initializing standard metrics")
   DefaultExports.initialize()
@@ -33,7 +37,9 @@ object Transporter extends App with LazyLogging {
   val httpConfig = config.getConfig("http")
   val httpPort = httpConfig.getInt("port")
   val httpInterface = httpConfig.getString("interface")
-  val serverBindingFuture = Http().bindAndHandle(TransporterConsole.routes, interface = httpInterface, port = httpPort)
+  val transporterConsole = TransporterConsole(system, actors)
+  val serverBindingFuture = Http().bindAndHandle(transporterConsole.routes, interface = httpInterface, port = httpPort)
+
   logger.info(s"Started HTTP Server at $httpInterface:$httpPort")
   logger.info("Press RETURN to stop")
   StdIn.readLine()

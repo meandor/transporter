@@ -1,4 +1,4 @@
-package de.transporter.console
+package de.transporter
 
 import akka.http.scaladsl.model.{HttpRequest, StatusCodes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
@@ -9,7 +9,7 @@ class TransporterConsoleTest extends FlatSpec with Matchers with ScalaFutures wi
   "Transporter Console" should "start and serve up metrics" in {
     val request = HttpRequest(uri = "/metrics")
 
-    request ~> TransporterConsole.routes ~> check {
+    request ~> TransporterConsole(system, Map()).routes ~> check {
       status should ===(StatusCodes.OK)
 
       entityAs[String] should include(
