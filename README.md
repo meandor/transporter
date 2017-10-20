@@ -20,13 +20,13 @@ change the `application.conf` file.
 ## Testing
 Execute the tests with gradle:
 ```bash
-./gradlew check
+./bin/go check
 ```
 
 ## Building
 To build with gradle:
 ```bash
-./gradlew distZip
+./bin/go clean distZip
 ```
 
 This will create a zip file under `./build/distributions/`
@@ -34,6 +34,12 @@ This will create a zip file under `./build/distributions/`
 Unzip it and then execute the application within the extracted folder:
 ```bash
 ./bin/transporter
+```
+
+## Build docker image
+To build a docker image called "transporter":
+```bash
+./bin/go dockerize
 ```
 
 ## Incoming Data
@@ -75,6 +81,10 @@ object SpecificPlatformPTC extends PhaseTransitionCoil {
 ...
 }
 ```
+
+## Example
+There is a package called `de.transporter.example` where you can see an example of how to
+add a transportation process.
 
 ## Metrics
 Prometheus metrics are exported to the HTTP server via the `/metrics` endpoint.
