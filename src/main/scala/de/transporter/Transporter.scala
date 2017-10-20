@@ -41,8 +41,15 @@ object Transporter extends App with LazyLogging {
   val serverBindingFuture = Http().bindAndHandle(transporterConsole.routes, interface = httpInterface, port = httpPort)
 
   logger.info(s"Started HTTP Server at $httpInterface:$httpPort")
-  logger.info("Press RETURN to stop")
-  StdIn.readLine()
+  logger.info("Enter quit to stop")
+
+  var continue = true
+  while (continue) {
+    StdIn.readLine match {
+      case "quit" => logger.info("Shutting down"); continue = false
+      case x =>
+    }
+  }
 
   serverBindingFuture
     .flatMap(_.unbind())
