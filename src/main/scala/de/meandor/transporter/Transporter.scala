@@ -47,7 +47,7 @@ object Transporter extends App with LazyLogging {
   while (continue) {
     StdIn.readLine.toLowerCase match {
       case "quit" => logger.info("Shutting down"); continue = false
-      case x =>
+      case _ =>
     }
   }
 

@@ -8,6 +8,8 @@ import akka.http.scaladsl.server.directives.MethodDirectives.post
 import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import akka.pattern.ask
 import akka.util.Timeout
+import com.lonelyplanet.prometheus.PrometheusResponseTimeRecorder
+import com.lonelyplanet.prometheus.directives.ResponseTimeRecordingDirectives
 import de.meandor.transporter.Metrics
 import de.meandor.transporter.platform.Platform.{ActionPerformed, Beam}
 
@@ -20,33 +22,33 @@ trait ExampleRoutes extends JsonSupport {
 
   def actors: Map[String, ActorRef]
 
-  implicit lazy val timeout = Timeout(5.seconds)
+  private val responseTimeDirectives = ResponseTimeRecordingDirectives(PrometheusResponseTimeRecorder.Default)
+
+  import responseTimeDirectives._
+
+  implicit lazy val timeout: Timeout = Timeout(5.seconds)
 
   lazy val exampleRoutes: Route =
-    pathPrefix("example") {
-      concat(
-        pathEnd {
-          concat(
-            post {
-              entity(as[ExampleRequest]) { testRequest =>
-                Metrics.beamLag.labels(testRequest.location.id).inc()
-                val beam: Future[ActionPerformed] = {
-                  val examplePadActor = actors.get("examplePad")
-                  if (examplePadActor.isDefined) {
-                    (examplePadActor.get ? Beam(testRequest.matter, testRequest.location)).mapTo[ActionPerformed]
-                  } else {
-                    Future(ActionPerformed("Actor not found!"))(ExecutionContext.global)
-                  }
-                }
-
-                onSuccess(beam) { performed =>
-                  Metrics.beamLag.labels(testRequest.location.id).dec()
-                  complete((StatusCodes.Created, performed))
-                }
+    path("example") {
+      post {
+        recordResponseTime("/example") {
+          entity(as[ExampleRequest]) { testRequest =>
+            Metrics.beamLag.labels(testRequest.location.id).inc()
+            val beam: Future[ActionPerformed] = {
+              val examplePadActor = actors.get("examplePad")
+              if (examplePadActor.isDefined) {
+                (examplePadActor.get ? Beam(testRequest.matter, testRequest.location)).mapTo[ActionPerformed]
+              } else {
+                Future(ActionPerformed("Actor not found!"))(ExecutionContext.global)
               }
             }
-          )
+
+            onSuccess(beam) { performed =>
+              Metrics.beamLag.labels(testRequest.location.id).dec()
+              complete((StatusCodes.Created, performed))
+            }
+          }
         }
-      )
+      }
     }
 }

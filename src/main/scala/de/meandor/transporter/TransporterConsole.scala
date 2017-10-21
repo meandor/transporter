@@ -12,8 +12,6 @@ import io.prometheus.client.CollectorRegistry
 case class TransporterConsole(system: ActorSystem, actors: Map[String, ActorRef]) extends ExampleRoutes with LazyLogging {
   private val prometheusRegistry: CollectorRegistry = PrometheusResponseTimeRecorder.DefaultRegistry
 
-  private val prometheusResponseTimeRecorder: PrometheusResponseTimeRecorder = PrometheusResponseTimeRecorder.Default
-
   private val metricsEndpoint = new MetricsEndpoint(prometheusRegistry)
 
   val routes: Route = metricsEndpoint.routes ~ exampleRoutes

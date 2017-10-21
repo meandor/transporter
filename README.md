@@ -52,7 +52,7 @@ For that just add new `de.teleport.platform.Platform`s at `de.meandor.transporte
 
 Each Platform consists of a `PhaseTransitionCoil` and a `TargetingScanner`.
 The `PhaseTransitionCoil` is responsible for transforming matter to energy or in other
-words transform incoming data (e.g. engity) into data that can be exported (e.g. DTO).
+words transform incoming data (e.g. entity) into data that can be exported (e.g. DTO).
 
 The `TargetingScanner` is responsible to lock onto the target depending on the given location.
 In other words find the proper API abstraction to export to (adapter), which is called `Target`.

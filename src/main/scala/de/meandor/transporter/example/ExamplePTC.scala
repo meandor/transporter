@@ -10,7 +10,7 @@ case class ExampleEnergy(subject: Matter) extends Energy {
 
 object ExamplePTC extends PhaseTransitionCoil with LazyLogging {
   override def energize(subject: Matter): Energy = {
-    logger.info(s"Energizin PhaseTransitionCoil with: ${subject.id}, ${subject.owner}")
+    logger.info(s"Energizing PhaseTransitionCoil with: ${subject.id}, ${subject.owner}")
     ExampleEnergy(subject)
   }
 }
