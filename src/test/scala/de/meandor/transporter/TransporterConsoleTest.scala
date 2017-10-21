@@ -1,4 +1,4 @@
-package de.transporter
+package de.meandor.transporter
 
 import akka.http.scaladsl.model.{HttpRequest, StatusCodes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest

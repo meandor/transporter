@@ -1,4 +1,4 @@
-package de.transporter.example
+package de.meandor.transporter.example
 
 import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.model.StatusCodes
@@ -8,8 +8,8 @@ import akka.http.scaladsl.server.directives.MethodDirectives.post
 import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import akka.pattern.ask
 import akka.util.Timeout
-import de.transporter.Metrics
-import de.transporter.platform.Platform.{ActionPerformed, Beam}
+import de.meandor.transporter.Metrics
+import de.meandor.transporter.platform.Platform.{ActionPerformed, Beam}
 
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}

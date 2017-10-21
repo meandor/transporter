@@ -1,7 +1,7 @@
-package de.transporter.platform
+package de.meandor.transporter.platform
 
 import akka.actor.{Actor, ActorLogging, Props}
-import de.transporter.{Location, Matter, Metrics}
+import de.meandor.transporter.{Location, Matter, Metrics}
 
 object Platform {
 

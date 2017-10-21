@@ -1,4 +1,4 @@
-package de.transporter.platform
+package de.meandor.transporter.platform
 
 import org.scalatest.{FeatureSpec, Matchers}
 

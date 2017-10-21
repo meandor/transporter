@@ -1,6 +1,6 @@
-package de.transporter.platform
+package de.meandor.transporter.platform
 
-import de.transporter.{Location, Matter}
+import de.meandor.transporter.{Location, Matter}
 
 trait TestSetup {
 

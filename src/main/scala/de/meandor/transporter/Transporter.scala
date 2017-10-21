@@ -1,12 +1,12 @@
-package de.transporter
+package de.meandor.transporter
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.LazyLogging
-import de.transporter.example.{ExamplePTC, ExampleTS}
-import de.transporter.platform.Platform
+import de.meandor.transporter.example.{ExamplePTC, ExampleTS}
+import de.meandor.transporter.platform.Platform
 import io.prometheus.client.hotspot.DefaultExports
 
 import scala.concurrent.ExecutionContext

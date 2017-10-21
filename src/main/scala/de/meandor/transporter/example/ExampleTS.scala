@@ -1,8 +1,8 @@
-package de.transporter.example
+package de.meandor.transporter.example
 
 import com.typesafe.scalalogging.LazyLogging
-import de.transporter.Location
-import de.transporter.platform.{Energy, Target, TargetingScanner}
+import de.meandor.transporter.Location
+import de.meandor.transporter.platform.{Energy, Target, TargetingScanner}
 
 object ExampleTarget extends Target with LazyLogging {
   override def location: Location = ExampleLocation("uranus")

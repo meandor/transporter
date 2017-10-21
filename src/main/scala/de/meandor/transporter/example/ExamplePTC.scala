@@ -1,8 +1,8 @@
-package de.transporter.example
+package de.meandor.transporter.example
 
 import com.typesafe.scalalogging.LazyLogging
-import de.transporter.Matter
-import de.transporter.platform.{Energy, PhaseTransitionCoil}
+import de.meandor.transporter.Matter
+import de.meandor.transporter.platform.{Energy, PhaseTransitionCoil}
 
 case class ExampleEnergy(subject: Matter) extends Energy {
   override def toJson: String = s"{'id':'${subject.id}','owner':'${subject.owner}'}"

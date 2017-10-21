@@ -1,4 +1,4 @@
-package de.transporter
+package de.meandor.transporter
 
 trait Matter {
   def id: String

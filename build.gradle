@@ -2,9 +2,9 @@ apply plugin: 'scala'
 apply plugin: 'idea'
 apply plugin: 'application'
 
-group = "de.transporter"
+group = "de.meandor"
 version = "0.1.0-SNAPSHOT"
-mainClassName = "de.transporter.Transporter"
+mainClassName = "de.meandor.transporter.Transporter"
 
 repositories {
     jcenter()

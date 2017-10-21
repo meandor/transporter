@@ -1,4 +1,4 @@
-package de.transporter
+package de.meandor.transporter
 
 import io.prometheus.client.{Counter, Gauge, Histogram}
 

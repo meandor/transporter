@@ -1,6 +1,6 @@
-package de.transporter.platform
+package de.meandor.transporter.platform
 
-import de.transporter.{Matter, Metrics}
+import de.meandor.transporter.{Matter, Metrics}
 
 case class Pad(target: Target, ptc: PhaseTransitionCoil) {
 

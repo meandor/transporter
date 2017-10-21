@@ -1,6 +1,6 @@
-package de.transporter.platform
+package de.meandor.transporter.platform
 
-import de.transporter.Location
+import de.meandor.transporter.Location
 
 trait Target {
   def location: Location

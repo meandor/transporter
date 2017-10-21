@@ -1,7 +1,7 @@
-package de.transporter.example
+package de.meandor.transporter.example
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import de.transporter.platform.Platform.ActionPerformed
+import de.meandor.transporter.platform.Platform.ActionPerformed
 import spray.json.DefaultJsonProtocol
 
 trait JsonSupport extends SprayJsonSupport {
