@@ -2,6 +2,9 @@ package de.meandor.transporter
 
 import io.prometheus.client.{Counter, Gauge, Histogram}
 
+/**
+  * All the Metrics
+  */
 object Metrics {
   private val totalBeams: Counter = Counter.build().name("beams_total")
     .help("Total number of beams .").labelNames("status", "location", "owner", "matter").register()

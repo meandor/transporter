@@ -12,6 +12,9 @@ import io.prometheus.client.hotspot.DefaultExports
 import scala.concurrent.ExecutionContext
 import scala.io.StdIn
 
+/**
+  * Main App transporting Matter.
+  */
 object Transporter extends App with LazyLogging {
   logger.info("Starting Transporter")
   logger.debug("Loading config")

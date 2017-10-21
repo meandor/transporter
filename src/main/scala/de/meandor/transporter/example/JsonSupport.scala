@@ -4,6 +4,9 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import de.meandor.transporter.platform.Platform.ActionPerformed
 import spray.json.{DefaultJsonProtocol, RootJsonFormat}
 
+/**
+  * How to transform internal data to json.
+  */
 trait JsonSupport extends SprayJsonSupport {
 
   import DefaultJsonProtocol._
