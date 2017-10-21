@@ -43,12 +43,12 @@ To build a docker image called "transporter":
 ```
 
 ## Incoming Data
-Add interfaces for dealing with incoming data at `de.transporter.console.TransporterConsole`
+Add interfaces for dealing with incoming data at `de.meandor.transporter.console.TransporterConsole`
 by registering [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/scala/http/) routes.
 
 ## Outgoing Data
 Register an Akka-Actor with the system for each location you want to transport to.
-For that just add new `de.teleport.platform.Platform`s at `de.transporter.Transporter`.
+For that just add new `de.teleport.platform.Platform`s at `de.meandor.transporter.Transporter`.
 
 Each Platform consists of a `PhaseTransitionCoil` and a `TargetingScanner`.
 The `PhaseTransitionCoil` is responsible for transforming matter to energy or in other
@@ -60,7 +60,7 @@ In other words find the proper API abstraction to export to (adapter), which is 
 To add an Export you have to add a new `Platform` actor with an Implementation of a
 `PhaseTransitionCoil` and a `TargetingScanner` which define how to export incoming data.
 
-In `de.transporter.Transporter`:
+In `de.meandor.transporter.Transporter`:
 ```scala
 ...
 implicit val system: ActorSystem = ActorSystem("Transporter")
@@ -83,7 +83,7 @@ object SpecificPlatformPTC extends PhaseTransitionCoil {
 ```
 
 ## Example
-There is a package called `de.transporter.example` where you can see an example of how to
+There is a package called `de.meandor.transporter.example` where you can see an example of how to
 add a transportation process.
 
 ## Metrics
