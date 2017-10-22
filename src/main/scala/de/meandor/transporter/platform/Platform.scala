@@ -1,6 +1,6 @@
 package de.meandor.transporter.platform
 
-import akka.actor.{Actor, ActorLogging, Props}
+import akka.actor.{Actor, Props}
 import de.meandor.transporter.{Location, Matter, Metrics}
 
 /**
@@ -32,7 +32,7 @@ object Platform {
   * @param ptc PhaseTransitionCoil implementation for transforming Matter to Energy for the specific Location
   * @param ts  TargetingScanner implementation for getting the correct Target for the specific Location
   */
-class Platform(ptc: PhaseTransitionCoil, ts: TargetingScanner) extends Actor with ActorLogging {
+class Platform(ptc: PhaseTransitionCoil, ts: TargetingScanner) extends Actor {
 
   import Platform._
 

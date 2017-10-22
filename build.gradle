@@ -18,6 +18,7 @@ dependencies {
     compile "org.scala-lang:scala-library:$scalaVersion.+"
     compile "ch.qos.logback:logback-classic:1.2.3"
     compile "com.typesafe.akka:akka-actor_$scalaVersion:$akkaVersion"
+    compile "com.typesafe.akka:akka-slf4j_$scalaVersion:$akkaVersion"
     compile "com.typesafe.akka:akka-http_$scalaVersion:$akkaHttpVersion"
     compile "com.typesafe.scala-logging:scala-logging_$scalaVersion:3.7.2"
     compile "com.typesafe.akka:akka-http-spray-json_$scalaVersion:$akkaHttpVersion"
