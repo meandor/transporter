@@ -12,6 +12,8 @@ and [Prometheus](https://prometheus.io) metrics.
 In other words it exports data to other locations. It can be used to export data to APIs. 
 It accepts incoming data via REST.
 
+[Transporter Image](http://www.startrek.com/uploads/assets/articles/transporter-1.jpg)
+
 ## Configuring
 
 To change configs like the port the HTTP server is listening to and similar,
