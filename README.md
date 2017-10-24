@@ -59,8 +59,8 @@ words transform incoming data (e.g. entity) into data that can be exported (e.g.
 The `TargetingScanner` is responsible to lock onto the target depending on the given location.
 In other words find the proper API abstraction to export to (adapter), which is called `Target`.
 
-To add an Export you have to add a new `Platform` actor with an Implementation of a
-`PhaseTransitionCoil` and a `TargetingScanner` which define how to export incoming data.
+To add an Export you have to add a new `Platform` actor with an mplementation of
+`PhaseTransitionCoil` and `TargetingScanner` which define how to export incoming data.
 
 In `de.meandor.transporter.Transporter`:
 ```scala
@@ -73,7 +73,7 @@ system.actorOf(Platform.props(SpecificPlatformPTC, SpecificPlatformTS), "Specifi
 ...
 ``` 
 
-where `SpecificPlatformTS` and `SpecificPlatformPTC` tell the Platform on how to beam Matter.
+where `SpecificPlatformTS` and `SpecificPlatformPTC` tell the Platform how to beam Matter.
 ```scala
 object SpecificPlatformTS extends TargetingScanner {  
 ...
