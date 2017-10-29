@@ -1,6 +1,6 @@
 # Transporter
 
-[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter)
+[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter) [![Coverage Status](https://coveralls.io/repos/github/meandor/transporter/badge.svg?branch=master)](https://coveralls.io/github/meandor/transporter?branch=master)
 
 A _Scala-Application_ that transports matter to locations using [Akka](https://akka.io/)
 and [Prometheus](https://prometheus.io) metrics.
