@@ -35,7 +35,7 @@ will release the version and publish the artifact to maven central.
 
 ## Outgoing Data
 Register an Akka-Actor with the system for each location you want to transport to.
-For that just add new `de.meandor.transporter.platform.Platform`s.
+For that just add new `com.github.meandor.transporter.platform.Platform`s.
 
 Each Platform consists of a `PhaseTransitionCoil` and a `TargetingScanner`.
 The `PhaseTransitionCoil` is responsible for transforming matter to energy or in other

@@ -1,7 +1,7 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
 import akka.actor.{Actor, Props}
-import de.meandor.transporter.{Location, Matter, Metrics}
+import com.github.meandor.transporter.{Location, Matter, Metrics}
 
 /**
   * Actor object for beaming (sending) subjects (data) to a Location.

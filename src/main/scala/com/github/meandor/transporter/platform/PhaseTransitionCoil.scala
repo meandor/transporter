@@ -1,6 +1,6 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
-import de.meandor.transporter.Matter
+import com.github.meandor.transporter.Matter
 
 /**
   * Transforms Matter to Energy.

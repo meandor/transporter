@@ -1,4 +1,4 @@
-package de.meandor.transporter
+package com.github.meandor.transporter
 
 /**
   * Enum like Location that Matter can be transported to.

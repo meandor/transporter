@@ -1,4 +1,4 @@
-package de.meandor.transporter
+package com.github.meandor.transporter
 
 /**
   * Matter that can be transported.

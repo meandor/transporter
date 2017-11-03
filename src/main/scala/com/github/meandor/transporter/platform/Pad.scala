@@ -1,6 +1,6 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
-import de.meandor.transporter.{Matter, Metrics}
+import com.github.meandor.transporter.{Matter, Metrics}
 
 /**
   * Pad that does the actual transporting.

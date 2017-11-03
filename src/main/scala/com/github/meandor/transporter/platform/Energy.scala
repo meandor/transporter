@@ -1,4 +1,4 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
 /**
   * Transformed matter representation to be transported (DTO)

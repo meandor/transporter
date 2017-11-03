@@ -1,9 +1,9 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
 import akka.actor.ActorSystem
 import akka.testkit.{TestKit, TestProbe}
-import de.meandor.transporter.Location
-import de.meandor.transporter.platform.Platform.{ActionPerformed, Beam}
+import com.github.meandor.transporter.Location
+import com.github.meandor.transporter.platform.Platform.{ActionPerformed, Beam}
 import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers}
 
 class PlatformTest(_system: ActorSystem) extends TestKit(_system)

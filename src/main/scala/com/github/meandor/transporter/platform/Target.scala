@@ -1,6 +1,6 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
-import de.meandor.transporter.Location
+import com.github.meandor.transporter.Location
 
 /**
   * Materializes the energy at the location.

@@ -1,6 +1,6 @@
-package de.meandor.transporter.platform
+package com.github.meandor.transporter.platform
 
-import de.meandor.transporter.{Location, Matter}
+import com.github.meandor.transporter.{Location, Matter}
 
 trait TestSetup {
 
