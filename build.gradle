@@ -9,7 +9,6 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 group = "com.github.meandor"
-version = "0.2.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
