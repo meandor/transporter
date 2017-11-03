@@ -4,13 +4,8 @@ b=`tput bold`
 nb=`tput sgr0`
 SCRIPT_DIR=$(dirname $0)
 
-function dockerize {
-    set -eu
-    ${SCRIPT_DIR}/../gradlew clean distZip
-    unzip ${SCRIPT_DIR}/../build/distributions/transporter-*.zip -d ./build/distributions/transporter
-    mv ${SCRIPT_DIR}/../build/distributions/transporter/transporter-*/* ${SCRIPT_DIR}/../build/distributions/transporter/
-    rm -rf ${SCRIPT_DIR}/../build/distributions/transporter/transporter-*
-    docker build -t transporter .
+function publish {
+    ${SCRIPT_DIR}/publish.sh
 }
 
 function help {
@@ -28,8 +23,8 @@ task can be:
 
 if [ "$1" == "help" ]; then
     help
-elif [ "$1" == "dockerize" ]; then
-    dockerize $*
+elif [ "$1" == "publish" ]; then
+    publish
 else
     ${SCRIPT_DIR}/../gradlew $*
 fi

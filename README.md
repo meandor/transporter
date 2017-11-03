@@ -26,11 +26,12 @@ To build with gradle:
 ```
 This will create a jar file in `./build/libs` without the dependencies.
 
-## Build docker image
-To build a docker image called "transporter":
+## Releasing and Publishing
 ```bash
-./bin/go dockerize
+./bin/go publish
 ```
+
+will release the version and publish the artifact to maven central.
 
 ## Outgoing Data
 Register an Akka-Actor with the system for each location you want to transport to.
