@@ -31,9 +31,9 @@ dependencies {
     testCompile "com.typesafe.akka:akka-testkit_$scalaVersion:$akkaVersion"
 }
 
-task scaladocJar(type: Jar) {
-    classifier = 'scaladoc'
-    from scaladoc
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
 }
 
 task sourcesJar(type: Jar) {
@@ -42,7 +42,7 @@ task sourcesJar(type: Jar) {
 }
 
 artifacts {
-    archives scaladocJar, sourcesJar
+    archives javadocJar, sourcesJar
 }
 
 signing {
