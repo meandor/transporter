@@ -1,8 +1,8 @@
 # Transporter
 
-[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter) [![Coverage Status](https://coveralls.io/repos/github/meandor/transporter/badge.svg?branch=master)](https://coveralls.io/github/meandor/transporter?branch=master)
+[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter)
 
-A _Scala-Application_ that transports matter to locations using [Akka](https://akka.io/)
+A _Scala-Library_ that transports matter to locations using [Akka](https://akka.io/)
 and [Prometheus](https://prometheus.io) metrics.
 
 > "Transporting really is the safest way to travel."
@@ -10,14 +10,8 @@ and [Prometheus](https://prometheus.io) metrics.
 > -- Geordi La Forge, 2369 ("Realm of Fear"), Star Trek
 
 In other words it exports data to other locations. It can be used to export data to APIs. 
-It accepts incoming data via REST.
 
 ![Transporter Image](http://www.startrek.com/uploads/assets/articles/transporter-1.jpg)
-
-## Configuring
-
-To change configs like the port the HTTP server is listening to and similar,
-change the `application.conf` file.
 
 ## Testing
 Execute the tests with gradle:
@@ -28,15 +22,9 @@ Execute the tests with gradle:
 ## Building
 To build with gradle:
 ```bash
-./bin/go clean distZip
+./bin/go clean build
 ```
-
-This will create a zip file under `./build/distributions/`
-
-Unzip it and then execute the application within the extracted folder:
-```bash
-./bin/transporter
-```
+This will create a jar file in `./build/libs` without the dependencies.
 
 ## Build docker image
 To build a docker image called "transporter":
@@ -44,13 +32,9 @@ To build a docker image called "transporter":
 ./bin/go dockerize
 ```
 
-## Incoming Data
-Add interfaces for dealing with incoming data at `de.meandor.transporter.console.TransporterConsole`
-by registering [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/scala/http/) routes.
-
 ## Outgoing Data
 Register an Akka-Actor with the system for each location you want to transport to.
-For that just add new `de.meandor.transporter.platform.Platform`s at `de.meandor.transporter.Transporter`.
+For that just add new `de.meandor.transporter.platform.Platform`s.
 
 Each Platform consists of a `PhaseTransitionCoil` and a `TargetingScanner`.
 The `PhaseTransitionCoil` is responsible for transforming matter to energy or in other
@@ -59,21 +43,16 @@ words transform incoming data (e.g. entity) into data that can be exported (e.g.
 The `TargetingScanner` is responsible to lock onto the target depending on the given location.
 In other words find the proper API abstraction to export to (adapter), which is called `Target`.
 
-To add an Export you have to add a new `Platform` actor with an mplementation of
+To add an Export you have to add a new `Platform` actor with an implementation of
 `PhaseTransitionCoil` and `TargetingScanner` which define how to export incoming data.
 
-In `de.meandor.transporter.Transporter`:
 ```scala
 ...
-implicit val system: ActorSystem = ActorSystem("Transporter")
-implicit val materializer: ActorMaterializer = ActorMaterializer()
-implicit val executionContext: ExecutionContext = system.dispatcher
-
 system.actorOf(Platform.props(SpecificPlatformPTC, SpecificPlatformTS), "SpecificPlatformName")
 ...
 ``` 
 
-where `SpecificPlatformTS` and `SpecificPlatformPTC` tell the Platform how to beam Matter.
+where `SpecificPlatformTS` and `SpecificPlatformPTC` tell the Platform how to beam Matter and `system` is an Akka Actor System.
 ```scala
 object SpecificPlatformTS extends TargetingScanner {  
 ...
@@ -85,11 +64,10 @@ object SpecificPlatformPTC extends PhaseTransitionCoil {
 ```
 
 ## Example
-There is a package called `de.meandor.transporter.example` where you can see an example of how to
-add a transportation process.
+https://github.com/meandor/voyage-transporter
 
 ## Metrics
-Prometheus metrics are exported to the HTTP server via the `/metrics` endpoint.
+Prometheus metrics are registered and available.
 
 ## Links
 * http://memory-alpha.wikia.com/wiki/Transporter
