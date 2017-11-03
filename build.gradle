@@ -19,7 +19,7 @@ def scalaVersion = "2.11"
 def akkaVersion = "2.4.16"
 
 dependencies {
-    compile "org.scala-lang:scala-library:$scalaVersion.+"
+    compile "org.scala-lang:scala-library:$scalaVersion"
     compile "ch.qos.logback:logback-classic:1.2.3"
     compile "com.typesafe.akka:akka-actor_$scalaVersion:$akkaVersion"
     compile "com.typesafe.akka:akka-slf4j_$scalaVersion:$akkaVersion"
