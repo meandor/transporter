@@ -1,6 +1,6 @@
 # Transporter
 
-[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter)
+[![Build Status](https://travis-ci.org/meandor/transporter.svg?branch=master)](https://travis-ci.org/meandor/transporter) [![GitHub license](https://img.shields.io/github/license/meandor/transporter.svg)](https://github.com/meandor/transporter/blob/master/LICENSE) [![release](https://maven-badges.herokuapp.com/maven-central/com.github.meandor/transporter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.meandor/transporter) 
 
 A _Scala-Library_ that transports matter to locations using [Akka](https://akka.io/)
 and [Prometheus](https://prometheus.io) metrics.
