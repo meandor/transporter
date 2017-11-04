@@ -28,10 +28,15 @@ This will create a jar file in `./build/libs` without the dependencies.
 
 ## Releasing and Publishing
 ```bash
+./bin/go release
+```
+Will release a newer version with semantic versioning 
+
+```bash
 ./bin/go publish
 ```
 
-will release the version and publish the artifact to maven central.
+will publish the artifact to maven central.
 
 ## Outgoing Data
 Register an Akka-Actor with the system for each location you want to transport to.
